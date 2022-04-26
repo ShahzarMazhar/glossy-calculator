@@ -42,7 +42,7 @@ function calculate(operation){
     if(operation == "delete"){
         if(resetPrimaryDisplay) return;
         displayDigit = displayDigit.toString().slice(0, -1); 
-        primaryDisplay.value = (/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  ;
+        primaryDisplay.value = maxError((/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  );
         // resetPrimaryDisplay = false;
         secondaryDisplay.value ="";
         playSound("Backspace");
@@ -76,8 +76,20 @@ function calculate(operation){
     if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
     result= Logs[Logs.length - 1].result || 0;
     result = (/\.\d/.test(result)) ? +result : (+result || 0) + "."  ;
-    primaryDisplay.value= result;
+    primaryDisplay.value= maxError(result);
     resetPrimaryDisplay = true;
+}
+
+function maxError(value){
+value = value.toString()
+    if(value.length <= 12){
+        return value;
+    }else{
+        // if(/\./.test(value)){
+        splitValue = value.split(".");
+        return splitValue[0].length <= 12 ? value.slice(0, 12) : "maxError";
+        // }else{return "maxError";}
+    }
 }
 
 function userInput(e){
@@ -87,7 +99,7 @@ function userInput(e){
         case "number": 
             displayDigit = resetPrimaryDisplay ? e.target.value : displayDigit + e.target.value; 
             // if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
-            primaryDisplay.value = (/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  ;
+            primaryDisplay.value = maxError((/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  );
             resetPrimaryDisplay = false;
             secondaryDisplay.value =  "";
             playSound("Number"); 
@@ -112,7 +124,7 @@ function keySupport(e){
         case "Numpad8":  case "Numpad9": 
             displayDigit = resetPrimaryDisplay ? e.key : displayDigit + e.key; 
             // if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
-            primaryDisplay.value = (/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  ;
+            primaryDisplay.value = maxError((/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  );
             resetPrimaryDisplay = false;
             playSound("Number"); 
             secondaryDisplay.value =  "";
