@@ -75,7 +75,7 @@ function calculate(operation){
     saveLog(currentInput,operation,displayDigit,Calculate.previousResult())
     if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
     result= Logs[Logs.length - 1].result || 0;
-    result = (/\.\d/.test(result)) ? +result : (+result || 0) + "."  ;
+    result = (/\.\d/.test(result)) ? +result.toFixed(10) : (+result || 0) + "."  ;
     primaryDisplay.value= maxError(result);
     resetPrimaryDisplay = true;
 }
