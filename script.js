@@ -42,9 +42,9 @@ function calculate(operation){
     if(operation == "delete"){
         if(resetPrimaryDisplay) return;
         displayDigit = displayDigit.toString().slice(0, -1); 
-        primaryDisplay.value = maxError((/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  );
-        // resetPrimaryDisplay = false;
-        secondaryDisplay.value ="";
+        primaryDisplay.value = (/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + ".";
+        secondaryDisplay.value =  "";
+     // resetPrimaryDisplay = false;
         playSound("Backspace");
         return;
     }
@@ -81,15 +81,32 @@ function calculate(operation){
 }
 
 function maxError(value){
+if(value > 999999999999) return "maxError"
 value = value.toString()
-    if(value.length <= 12){
+console.log(Logs[Logs.length-1].result)
+    if(value.length <= 13){
         return value;
     }else{
         // if(/\./.test(value)){
         splitValue = value.split(".");
-        return splitValue[0].length <= 12 ? value.slice(0, 12) : "maxError";
+        return splitValue[0].length <= 13 ? value.slice(0, 12) : "maxError";
         // }else{return "maxError";}
     }
+}
+
+function liveOutput(value){
+
+    if((primaryDisplay.value.length <= 12) || (resetPrimaryDisplay && pendingOperation[0])){
+
+        displayDigit = resetPrimaryDisplay ? value : displayDigit + value; 
+        primaryDisplay.value = (/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + ".";
+        secondaryDisplay.value =  "";
+
+    }else{
+        secondaryDisplay.value =  "maxReached";
+    }
+    resetPrimaryDisplay = false;
+    playSound("Number"); 
 }
 
 function userInput(e){
@@ -97,12 +114,9 @@ function userInput(e){
     switch(e.target.getAttribute("data-type")){
         case "point": if(/\./.test(displayDigit)){return;};
         case "number": 
-            displayDigit = resetPrimaryDisplay ? e.target.value : displayDigit + e.target.value; 
-            // if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
-            primaryDisplay.value = maxError((/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  );
-            resetPrimaryDisplay = false;
-            secondaryDisplay.value =  "";
-            playSound("Number"); 
+        // if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
+            liveOutput(e.target.value);
+
         break;
         case "operation": 
             secondaryDisplay.value =  e.target.value;
@@ -122,12 +136,7 @@ function keySupport(e){
         case "Numpad0": case "Numpad1":  case "Numpad2":  case "Numpad3": 
         case "Numpad4":  case "Numpad5":  case "Numpad6":  case "Numpad7": 
         case "Numpad8":  case "Numpad9": 
-            displayDigit = resetPrimaryDisplay ? e.key : displayDigit + e.key; 
-            // if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
-            primaryDisplay.value = maxError((/\.\d/.test(displayDigit)) ? +displayDigit : (+displayDigit || 0) + "."  );
-            resetPrimaryDisplay = false;
-            playSound("Number"); 
-            secondaryDisplay.value =  "";
+            liveOutput(e.target.value);
             break;
 
         case "Backspace":
