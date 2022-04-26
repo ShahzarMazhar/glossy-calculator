@@ -112,7 +112,7 @@ function liveOutput(value){
 function userInput(e){
 
     switch(e.target.getAttribute("data-type")){
-        case "point": if(/\./.test(displayDigit)){return;};
+        case "point": if(/\./.test(displayDigit) && resetPrimaryDisplay == false){return;};
         case "number": 
         // if(["-0","-","0",0].includes(displayDigit)){displayDigit = ""}
             liveOutput(e.target.value);
