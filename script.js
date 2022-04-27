@@ -136,7 +136,7 @@ function keySupport(e){
         case "Numpad0": case "Numpad1":  case "Numpad2":  case "Numpad3": 
         case "Numpad4":  case "Numpad5":  case "Numpad6":  case "Numpad7": 
         case "Numpad8":  case "Numpad9": 
-            liveOutput(e.target.value);
+            liveOutput(e.key);
             break;
 
         case "Backspace":
