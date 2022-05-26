@@ -1,85 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glossy Calculator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- <div class="background-circle"></div> -->
-    <header>
-    </header>
+    <header></header>
     <div class="container">
-        <main id="calculator">
-            <div class="display">
-                <input type="checkbox" name="" id="audio-button"checked>
-                <label for="audio-button">🕪</label>
+      <main id="calculator">
+        <div class="display">
+          <input type="checkbox" name="" id="audio-button" checked />
+          <label for="audio-button">🕪</label>
 
-                <div class="user-input">
-
-                    <input id="indicator" type="text" value="" readonly>
-                    <input id="display"  type="text" value="0." readonly>
-                    <input id="delete" class="disabled" type="button" data-type="operation" data-key="delete" value="⌦">
-                </div>
-            </div>
-            <div class="basic-keys">
-                <div class="number-keys">
-                    <input type="button" data-type="number" value="9">
-                    <input type="button" data-type="number" value="8">
-                    <input type="button" data-type="number" value="7">
-                    <input type="button" data-type="number" value="6">
-                    <input type="button" data-type="number" value="5">
-                    <input type="button" data-type="number" value="4">
-                    <input type="button" data-type="number" value="3">
-                    <input type="button" data-type="number" value="2">
-                    <input type="button" data-type="number" value="1">
-                    <input type="button" data-type="point" value=".">
-                    <input type="button" data-type="number" value="0">
-                </div>
-                <div class="basic-operation-keys">
-                    <input type="button" data-type="operation" data-key="divide" value="÷">
-                    <input type="button" data-type="operation" data-key="memory" value="MRC">
-                    <input type="button" data-type="operation" data-key="multiply" value="×">
-                    <input type="button" data-type="operation" data-key="memory-minus" value="M-">
-                    <input type="button" data-type="operation" data-key="minus" value="-">
-                    <input type="button" data-type="operation" data-key="memory-plus" value="M+">
-                    <input type="button" data-type="operation" data-key="plus" value="+">
-                    <input type="button" data-type="operation" data-key="equal" value="=">
-                </div>
-                <div class="intermediate-operation-keys">
-                    <!-- <input type="button" class="disabled" data-type="operation" data-key="up" value="⌃" readonly>
+          <div class="user-input">
+            <input id="indicator" type="text" value="" readonly />
+            <input id="display" type="text" value="0." readonly />
+            <input
+              id="delete"
+              class="disabled"
+              type="button"
+              data-type="operation"
+              data-key="delete"
+              value="⌦"
+            />
+          </div>
+        </div>
+        <div class="basic-keys">
+          <div class="number-keys">
+            <input type="button" data-type="number" value="9" />
+            <input type="button" data-type="number" value="8" />
+            <input type="button" data-type="number" value="7" />
+            <input type="button" data-type="number" value="6" />
+            <input type="button" data-type="number" value="5" />
+            <input type="button" data-type="number" value="4" />
+            <input type="button" data-type="number" value="3" />
+            <input type="button" data-type="number" value="2" />
+            <input type="button" data-type="number" value="1" />
+            <input type="button" data-type="point" value="." />
+            <input type="button" data-type="number" value="0" />
+          </div>
+          <div class="basic-operation-keys">
+            <input
+              type="button"
+              data-type="operation"
+              data-key="divide"
+              value="÷"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="memory"
+              value="MRC"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="multiply"
+              value="×"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="memory-minus"
+              value="M-"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="minus"
+              value="-"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="memory-plus"
+              value="M+"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="plus"
+              value="+"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="equal"
+              value="="
+            />
+          </div>
+          <div class="intermediate-operation-keys">
+            <!-- <input type="button" class="disabled" data-type="operation" data-key="up" value="⌃" readonly>
                     <input type="button" class="disabled" data-type="operation" data-key="down" value="⌄" readonly> -->
-                    <input type="button" data-type="operation" data-key="plus-minus" value="+/-">
-                    <input type="button" data-type="operation" data-key="square" value="x²">
-                    <input type="button" data-type="operation" data-key="factorial" value="x!">
-                    <input type="button" data-type="operation" data-key="square-root" value="√">
-                    <input type="button" data-type="operation" data-key="percentage" value="%">
-                    <input type="button" data-type="operation" data-key="mark-up" value="MU">
-                    <input type="button" data-type="operation" data-key="reset" value="AC">
-                    <input type="button" data-type="operation" data-key="clear" value="C">
-                </div>
-            </div>
-        </main>
+            <input
+              type="button"
+              data-type="operation"
+              data-key="plus-minus"
+              value="+/-"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="square"
+              value="x²"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="factorial"
+              value="x!"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="square-root"
+              value="√"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="percentage"
+              value="%"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="mark-up"
+              value="MU"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="reset"
+              value="AC"
+            />
+            <input
+              type="button"
+              data-type="operation"
+              data-key="clear"
+              value="C"
+            />
+          </div>
+        </div>
+      </main>
     </div>
-    <audio data-audio="Backspace" src="./audio/mixkit-arcade-game-jump-coin-216.wav"></audio>
-    <audio data-audio="reset" src="./audio/mixkit-collect-material-3209.wav"></audio>
-    <audio data-audio="Number" src="./audio/mixkit-modern-technology-select-3124.wav"></audio>
-    <audio data-audio="function" src="./audio/mixkit-negative-tone-interface-tap-2569.wav"></audio>
-</body>
-<script type="text/javascript" src="./script.js"></script>
-<script type="text/javascript" src="./vanilla-tilt.min.js"></script>
-<script type="text/javascript">
+    <audio
+      data-audio="Backspace"
+      src="./audio/mixkit-arcade-game-jump-coin-216.wav"
+    ></audio>
+    <audio
+      data-audio="reset"
+      src="./audio/mixkit-collect-material-3209.wav"
+    ></audio>
+    <audio
+      data-audio="Number"
+      src="./audio/mixkit-modern-technology-select-3124.wav"
+    ></audio>
+    <audio
+      data-audio="function"
+      src="./audio/mixkit-negative-tone-interface-tap-2569.wav"
+    ></audio>
+  </body>
+  <script type="text/javascript" src="./script.js"></script>
+  <script type="text/javascript" src="./vanilla-tilt.min.js"></script>
+  <script type="text/javascript">
     VanillaTilt.init(document.querySelectorAll("input[type=button]"), {
-        max: 25,
-        speed: 400,
-        glare: true,
-        "max-glare": 1,
-
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 1,
     });
-    
+
     //It also supports NodeList
     // VanillaTilt.init(document.querySelectorAll(".card"));
-</script>
+  </script>
 </html>
