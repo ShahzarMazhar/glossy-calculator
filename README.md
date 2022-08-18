@@ -1,5 +1,5 @@
 # Glossy Calculator
-Last project of [TheOdinProject](https://www.theodinproject.com/lessons/foundations-calculator) from foundation curriculum.
+Last project [Calculator](https://www.theodinproject.com/lessons/foundations-calculator) from [TheOdinProject](https://www.theodinproject.com)'s foundation curriculum.
 
 ## Learning Outcomes Summary
 - Objects
